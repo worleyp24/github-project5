@@ -160,8 +160,9 @@ const CartItem = ({ cartItem, dispatchParent, alertModal, products }) => {
               })}
             </td>
             <td>
-              <div className={styles.deleteCartItem}>
+              <div>
                 <FaTrashAlt
+                  className={styles.deleteCartItem}
                   onClick={() =>
                     dispatchParent({
                       type: "ALERT_MODAL",
