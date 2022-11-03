@@ -31,7 +31,7 @@ const CartItem = ({ cartItem, dispatchParent, alertModal, products }) => {
               quantity: parseInt(e.target.value),
             },
           });
-          axios.put(`http://localhost:8080/Cart/${item.id}`, {
+          axios.put(`https://resto-app-back.herokuapp.com/Cart/${item.id}`, {
             id: item.id,
             discount: item.discount,
             image: item.image,
@@ -45,7 +45,7 @@ const CartItem = ({ cartItem, dispatchParent, alertModal, products }) => {
         const decreaseQty = () => {
           if (item.quantity < 2) {
             axios
-              .delete(`http://localhost:8080/Cart/${item.id}`)
+              .delete(`https://resto-app-back.herokuapp.com/Cart/${item.id}`)
               .then((response) => {
                 dispatchParent({
                   type: "REMOVE_CART_ITEM",
@@ -56,7 +56,7 @@ const CartItem = ({ cartItem, dispatchParent, alertModal, products }) => {
               });
           } else {
             axios
-              .put(`http://localhost:8080/Cart/${item.id}`, {
+              .put(`https://resto-app-back.herokuapp.com/Cart/${item.id}`, {
                 id: item.id,
                 discount: item.discount,
                 image: item.image,
@@ -120,16 +120,19 @@ const CartItem = ({ cartItem, dispatchParent, alertModal, products }) => {
                 className={styles.button}
                 onClick={() =>
                   axios
-                    .put(`http://localhost:8080/Cart/${item.id}`, {
-                      id: item.id,
-                      discount: item.discount,
-                      image: item.image,
-                      name: item.name,
-                      category: item.category,
-                      price: item.price,
-                      description: item.description,
-                      quantity: item.quantity + 1,
-                    })
+                    .put(
+                      `https://resto-app-back.herokuapp.com/Cart/${item.id}`,
+                      {
+                        id: item.id,
+                        discount: item.discount,
+                        image: item.image,
+                        name: item.name,
+                        category: item.category,
+                        price: item.price,
+                        description: item.description,
+                        quantity: item.quantity + 1,
+                      }
+                    )
                     .then((response) => {
                       dispatchParent({
                         type: "EDIT_CART_ITEM",

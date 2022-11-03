@@ -324,7 +324,7 @@ const NewItem = ({ optionsCategories, dispatchParent, products }) => {
       });
     } else {
       axios
-        .post("http://localhost:8080/Menu", state.newItem)
+        .post("https://resto-app-back.herokuapp.com/Menu", state.newItem)
         .then((response) => {
           dispatchParent({
             type: "ADD_NEW_ITEM",

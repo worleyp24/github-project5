@@ -82,7 +82,7 @@ const App = () => {
         } else {
           updatedCart = [...cartCopy, { ...action.payload, quantity: 1 }];
         }
-        axios.post("http://localhost:8080/Cart", updatedCart);
+        axios.post("https://resto-app-back.herokuapp.com/Cart", updatedCart);
         return {
           ...state,
           cartItem: updatedCart,
@@ -209,7 +209,7 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/Menu").then((response) => {
+    axios.get("https://resto-app-back.herokuapp.com/Menu").then((response) => {
       dispatch({
         type: "LOAD_PRODUCTS",
         payload: response.data,
@@ -219,7 +219,7 @@ const App = () => {
         payload: response.data,
       });
     });
-    axios.get("http://localhost:8080/Cart").then((response) => {
+    axios.get("https://resto-app-back.herokuapp.com/Cart").then((response) => {
       dispatch({
         type: "LOAD_CART_ITEMS",
         payload: response.data,

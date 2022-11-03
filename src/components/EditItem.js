@@ -31,7 +31,10 @@ const EditItem = ({
   const handleEditItem = () => {
     if (cartItem.length <= 0) {
       axios
-        .put(`http://localhost:8080/Menu/${editItem.id}`, editItem)
+        .put(
+          `https://resto-app-back.herokuapp.com/Menu/${editItem.id}`,
+          editItem
+        )
         .then((response) => {
           dispatchParent({
             type: "EDIT_ITEM",
@@ -48,7 +51,10 @@ const EditItem = ({
         });
     } else {
       axios
-        .put(`http://localhost:8080/Menu/${editItem.id}`, editItem)
+        .put(
+          `https://resto-app-back.herokuapp.com/Menu/${editItem.id}`,
+          editItem
+        )
         .then((response) => {
           dispatchParent({
             type: "EDIT_ITEM",
@@ -64,7 +70,10 @@ const EditItem = ({
           });
         });
       axios
-        .put(`http://localhost:8080/Cart/${editItem.id}`, editItem)
+        .put(
+          `https://resto-app-back.herokuapp.com/Cart/${editItem.id}`,
+          editItem
+        )
         .then((response) => {
           dispatchParent({
             type: "EDIT_CART_ITEM",

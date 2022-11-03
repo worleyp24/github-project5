@@ -11,58 +11,64 @@ import {
 
 const Alert = ({ errorType, dispatchParent, id, name }) => {
   const handleRemoveItem = () => {
-    axios.delete(`http://localhost:8080/Menu/${id}`).then((response) => {
-      dispatchParent({
-        type: "REMOVE_ITEM",
-        payload: {
-          id: id,
-        },
-      });
+    axios
+      .delete(`https://resto-app-back.herokuapp.com/Menu/${id}`)
+      .then((response) => {
+        dispatchParent({
+          type: "REMOVE_ITEM",
+          payload: {
+            id: id,
+          },
+        });
 
-      dispatchParent({
-        type: "ALERT_MODAL",
-        payload: {
-          status: false,
-          errorType: "",
-          id: "",
-          name: "",
-          newItemForm: false,
-          editItemForm: false,
-          cartItemForm: false,
-        },
+        dispatchParent({
+          type: "ALERT_MODAL",
+          payload: {
+            status: false,
+            errorType: "",
+            id: "",
+            name: "",
+            newItemForm: false,
+            editItemForm: false,
+            cartItemForm: false,
+          },
+        });
       });
-    });
-    axios.delete(`http://localhost:8080/Cart/${id}`).then((response) => {
-      dispatchParent({
-        type: "REMOVE_CART_ITEM",
-        payload: {
-          id: id,
-        },
+    axios
+      .delete(`https://resto-app-back.herokuapp.com/Cart/${id}`)
+      .then((response) => {
+        dispatchParent({
+          type: "REMOVE_CART_ITEM",
+          payload: {
+            id: id,
+          },
+        });
       });
-    });
   };
 
   const handleRemoveCartItem = () => {
-    axios.delete(`http://localhost:8080/Cart/${id}`).then((response) => {
-      dispatchParent({
-        type: "REMOVE_CART_ITEM",
-        payload: {
-          id: id,
-        },
+    axios
+      .delete(`https://resto-app-back.herokuapp.com/Cart/${id}`)
+      .then((response) => {
+        dispatchParent({
+          type: "REMOVE_CART_ITEM",
+          payload: {
+            id: id,
+          },
+        });
+        dispatchParent({
+          type: "ALERT_MODAL",
+          payload: {
+            status: false,
+            errorType: "",
+            id: "",
+            name: "",
+            newItemForm: false,
+            editItemForm: false,
+            cartItemForm: true,
+          },
+        });
       });
-      dispatchParent({
-        type: "ALERT_MODAL",
-        payload: {
-          status: false,
-          errorType: "",
-          id: "",
-          name: "",
-          newItemForm: false,
-          editItemForm: false,
-          cartItemForm: true,
-        },
-      });
-    });
   };
 
   const handleDiscard = () => {
